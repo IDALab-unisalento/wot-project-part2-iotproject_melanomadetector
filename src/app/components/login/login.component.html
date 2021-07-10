@@ -1,0 +1,38 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Admin Login</h5>
+    <form>
+      <div class="mb-3">
+        <label for="inputEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Insert email"
+               #UserEmail="ngModel"
+               [ngClass]="{'is-invalid':UserEmail.errors && UserEmail.touched}"
+               [(ngModel)]="loginuser.email"
+               name="email"
+               pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+        >
+        <div class="invalid-feedback">
+          Email is not well formatted
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1"#UserPassword="ngModel" placeholder="Insert password"
+               [ngClass]="{'is-invalid': UserPassword.errors && UserPassword.touched}"
+               [(ngModel)]="loginuser.password"
+               name="surname"
+               required="true"
+        >
+        <div class="invalid-feedback">
+          Surname is required
+        </div>
+      </div>
+      <div class="mb-3 form-check">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="submit(loginuser.email,loginuser.password)" >Submit</button>
+      <div class="invalid-feedback">
+        {{message}}
+      </div>
+    </form>
+  </div>
+</div>
