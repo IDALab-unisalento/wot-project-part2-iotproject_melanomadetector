@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">MD Console</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search by codiceFiscale" aria-label="Search"
+             [(ngModel)]="searchText"
+      >
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search()" >Search</button>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      Image
+    </div>
+    <div class="col-sm">
+      Highest Prediction Class
+    </div>
+    <div class="col-sm">
+      Highest Prediction Score
+    </div>
+    <div class="col-sm">
+      Risk Level
+    </div>
+    <div class="col-sm">
+      User Name
+    </div>
+    <div class="col-sm">
+      User Codice Fiscale
+    </div>
+  </div>
+  <div class="row" *ngFor="let reading of readings">
+    <div class="col-sm">
+      <img class="image" src= "{{reading.image}}"/>
+    </div>
+    <div class="col-sm">
+      {{reading.highestPredictionClass}}
+    </div>
+    <div class="col-sm">
+      {{reading.highestPredictionScore}}
+    </div>
+    <div class="col-sm">
+      {{reading.risk === 0 ? 'LOW' : reading.risk === 1 ? 'MEDIUM' : 'HIGH' }}
+    </div>
+    <div class="col-sm">
+      {{reading.user.name}} {{reading.user.surname | uppercase}}
+    </div>
+    <div class="col-sm">
+      {{reading.user.codiceFiscale}}
+    </div>
+  </div>
+</div>

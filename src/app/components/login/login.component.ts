@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../models/user";
+import {User} from '../../../model/user';
 import {UserService} from "../../services/user.service";
-import {UtilityService} from "../../services/utility.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService, private utilityService: UtilityService,
+  constructor(private userService: UserService,
               private route: Router) {
   }
 
@@ -28,11 +27,12 @@ export class LoginComponent implements OnInit {
         console.log("Login successful");
         //this.authService.authLogin(this.model);
         localStorage.setItem('isLoggedIn', "true");
-        localStorage.setItem('admin', JSON.stringify(data));
+        localStorage.setItem('user', JSON.stringify(data));
         this.route.navigateByUrl("/dash");
       }
       else {
         this.message = "Please check your userid and password";
+        return
       }
       this.loginuser = data;
     });
